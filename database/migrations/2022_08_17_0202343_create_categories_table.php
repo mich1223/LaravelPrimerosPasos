@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts_tabla', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string("title",255);
             $table->string("slug",255);
-            $table->text("content");
-            $table->string("image");
-            $table->enum("posted",['yes','not']);
             $table->timestamps();
-            //$table->foreingId('categories_id')->constrained() -> onDeleted('cascade');
+            
+            
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_tabla');
+        Schema::dropIfExists('categories');
     }
 };
