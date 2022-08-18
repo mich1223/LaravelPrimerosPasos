@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\TestController;
+
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\TestController; //importar controlador testcontroller
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TestController::class, 'index' ]);
+Route::get('/', function(){
+
+    return view('welcome');
+});
