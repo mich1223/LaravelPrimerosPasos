@@ -26,8 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories=Category::get();
-        //dd($categories[0]);
+        $categories=Category::pluck('id','title');
+        //dd($categories);
         echo view('dashboard.post.create', compact('categories') );
 
     }
@@ -40,7 +40,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-       
+       //dd($request->all());
+       $data = array_merge($request->all(), ['image'=> '']);
+       Post::create($data);
     }
 
     /**

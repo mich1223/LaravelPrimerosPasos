@@ -19,8 +19,8 @@
         <label>Categoria</label>
         <select name="category_id">
             <option></option>
-            @foreach ($categories as $c)
-            <option value={{ $c->id }}>{{$c->title}}</option>
+            @foreach ($categories as $title=>$id)
+            <option value={{ $id }}>{{$title}}</option>
                            
             @endforeach
         </select>
@@ -32,9 +32,7 @@
            
         </select>
 
-        <input type="text" name="slug">
-
-        <label for="">Contenido</label>
+               <label for="">Contenido</label>
         <textarea name="content"></textarea>
 
         <label for="">Descripcion</label>

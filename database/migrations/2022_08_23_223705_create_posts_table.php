@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("image");
             $table->enum("posted",['yes','not']);
             $table->timestamps();
-            $table->foreingId('categories_id')->constrained() -> onDeleted('cascade');
+            $table->foreignId('category_id')->constrained() -> onDelete('cascade');
         });
     }
 
