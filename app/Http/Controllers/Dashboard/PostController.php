@@ -36,8 +36,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
-        echo "store";
+        //echo(request("title"));
+        //  dd($request);
+        //echo $request->input('slug');
+        dd( $request->all());
+
     }
 
     /**
