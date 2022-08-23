@@ -16,6 +16,24 @@
         <label for="">Slug</label>
         <input type="text" name="slug">
 
+        <label>Categoria</label>
+        <select name="category_id">
+            <option></option>
+            @foreach ($categories as $c)
+            <option value={{ $c->id }}>{{$c->title}}</option>
+                           
+            @endforeach
+        </select>
+
+        <label>Posteado</label>
+        <select name="posted">
+            <option value="not">No</option>
+            <option value="yes">Si</option>
+           
+        </select>
+
+        <input type="text" name="slug">
+
         <label for="">Contenido</label>
         <textarea name="content"></textarea>
 
