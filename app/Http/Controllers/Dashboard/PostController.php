@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        echo "Index";
     }
 
     /**
@@ -27,8 +27,8 @@ class PostController extends Controller
     public function create()
     {
         $categories=Category::get();
-        //dd($categories[0]->title);
-        echo view('dashboard.post.create', compact('categories'));
+        //dd($categories[0]);
+        echo view('dashboard.post.create', compact('categories') );
 
     }
 
@@ -40,11 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //echo(request("title"));
-        //  dd($request);
-        //echo $request->input('slug');
-        dd( $request->all());
-
+       
     }
 
     /**

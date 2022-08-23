@@ -8,8 +8,11 @@
 </head>
 <body>
     
+    <form action="{{route('post.store')}}" method="post">
+        @csrf
         <label for="">Titulo</label>
         <input type="text" name="title">
+      
         <label for="">Slug</label>
         <input type="text" name="slug">
 
@@ -38,5 +41,6 @@
         <textarea name="description"></textarea>
         
     <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>
