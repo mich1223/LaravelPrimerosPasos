@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\post\StoreRequest;
-use App\Models\Post;
 use App\Models\Category;
-use Iluminate\Support\Str;
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -19,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo view('dashboard.post.index');
+        //
     }
 
     /**
@@ -29,9 +26,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories= Category::pluck('id', 'title');
-        
+        $categories=Category::get();
+        //dd($categories[0]->title);
         echo view('dashboard.post.create', compact('categories'));
+
     }
 
     /**
@@ -40,20 +38,13 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        //echo request("title");
-        //echo $request -> input('slug');
-        
-        
-        //$validated=Validator::make($request->all(), StoreRequest::myRules());
-        //dd($validated);
-        //$data = array_merge($request->all(), ['image'=> '']);
-        //dd($data);
-        $data=$request->validated();
-        //$data['slug']= Str::slug($data['title']);
-        dd($request -> validated()['slug']);
-        Post::create($data);
+        //echo(request("title"));
+        //  dd($request);
+        //echo $request->input('slug');
+        dd( $request->all());
+
     }
 
     /**
@@ -98,6 +89,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        
+        //
     }
 }
