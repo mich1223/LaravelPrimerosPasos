@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Category;
@@ -19,7 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo "Index";
+        $posts=Post::paginate(2);
+        echo view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -50,9 +52,14 @@ class PostController extends Controller
         //$validated = Validator::make($request->all(), StoreRequest::myRules());
        //dd($validated->fails());
         //dd($validated->errors());
-       $data=array_merge($request->all(), ['image'=> '']);
+       //$data=array_merge($request->all(), ['image'=> '']);
       // dd($data);
-       Post::create($data);
+      //$data=$request->validated();
+      //$data['slug']=Str::slug($data['title']);
+      //dd($data);
+     //  Post::create($data);
+        Post::create($request->validated());
+
     }
 
     /**
