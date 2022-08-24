@@ -7,7 +7,16 @@
     <title>Crear Post</title>
 </head>
 <body>
-    
+    <h1>Crear Post</h1>
+    @if ($errors->any())
+        @foreach ($errors->all() as $e)
+            <div class="error">
+                {{$e}}
+            </div>
+        @endforeach
+    @endif
+
+
     <form action="{{route('post.store')}}" method="post">
         @csrf
         <label for="">Titulo</label>
@@ -32,7 +41,7 @@
            
         </select>
 
-               <label for="">Contenido</label>
+         <label for="">Contenido</label>
         <textarea name="content"></textarea>
 
         <label for="">Descripcion</label>
