@@ -34,7 +34,9 @@ class PostController extends Controller
     {
         $categories=Category::pluck('id','title');
         //dd($categories);
-        echo view('dashboard.post.create', compact('categories') );
+        $post = New Post();
+        //dd($post);
+        echo view('dashboard.post.create', compact('categories', 'post') );
 
     }
 
