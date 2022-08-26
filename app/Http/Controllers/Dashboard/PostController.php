@@ -44,7 +44,7 @@ class PostController extends Controller
         $post = New Post();
         //dd($post);
         echo view('dashboard.post.create', compact('categories', 'post') );
-
+        //return to_route("post.index")->with('status', "Registro Creado :)!");
     }
 
     /**
@@ -104,8 +104,22 @@ class PostController extends Controller
     public function update(PutRequest $request, Post $post)
     {
        
-        $post->update($request->validated());
-        return to_route("post.index");
+        //dd($request->validated());
+
+        $data=$request->validated();
+        if(isset($request->validated()['image']) ){
+            
+            
+            $data["image"]=$filename= time().".".$data["image"]->extension();
+            //dd($filename);
+            $request->image->move(public_path("image"), $filename);
+           
+        }
+        $post->update($data);
+        //$request->session()->flash('status', "Registro actualizado :)!");
+        //$request->validated()["image"]->move(public_path("image",$filename));
+        return to_route("post.index")->with('status', "Registro actualizado :)!");
+
     }
 
     /**
@@ -119,6 +133,7 @@ class PostController extends Controller
         //echo "destroy";
         $post->delete();
         //return to_route("post,index");
+        return to_route("post.index")->with('status', "Registro eliminado :)!");
 
     }
 }
